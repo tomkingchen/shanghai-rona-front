@@ -30,10 +30,7 @@ const Shanghai = () => {
           <AreaChart data={shanghai}>
             <Area type="monotone" dataKey="nonesymptomatic" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
             <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
-            <XAxis dataKey="date" tickFormatter={str => {
-              const date = parseISO(str);              
-                return format(date, "MMM d");
-            }} />
+            <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
             <CartesianGrid opacity={0.5} vertical={false}/>
