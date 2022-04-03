@@ -15,7 +15,7 @@ const Shanghai = () => {
 
   useEffect(() => {
     const getShanghai = async () => {
-      const resp =  await fetch('https://shanghai-rona-api.tomking-chen.workers.dev/api/shanghai');
+      const resp =  await fetch('https://api.shanghaicovid.xyz/api/shanghai');
       const shanghaiResp = await resp.json();
       setShanghai(shanghaiResp);
     };
