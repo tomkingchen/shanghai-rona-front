@@ -26,25 +26,15 @@ const Shanghai = () => {
     return (
       <div>
         <h1>Shanghai Daily COVID Number</h1>
-        {shanghai.map(shanghaiDailyNumber => (
-          <div key={shanghaiDailyNumber.date}>
-            <h3>{shanghaiDailyNumber.nonesymptomatic}</h3>
-          </div>
-        ))}
         <ResponsiveContainer width="100%" height={400}>
           <AreaChart data={shanghai}>
-            <defs>
-              <linearGradient id="color" x1="0" y1="0" x2="0" y2="1" >
-                <stop offset="0%" stopColor="#2451B7" stopOpacity={0.4} />
-                <stop offset="75%" stopColor="#2451B7" stopOpacity={0.05} />
-              </linearGradient>
-            </defs>
-            <Area dataKey="symptomatic" stroke="#2451B7" />
+            <Area type="monotone" dataKey="nonesymptomatic" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
+            <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
             <XAxis dataKey="date" tickFormatter={str => {
               const date = parseISO(str);              
                 return format(date, "MMM d");
             }} />
-            <YAxis dataKey="symptomatic" axisLine={false} />
+            <YAxis />
             <Tooltip />
             <CartesianGrid opacity={0.5} vertical={false}/>
           </AreaChart>
