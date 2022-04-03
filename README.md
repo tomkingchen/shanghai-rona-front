@@ -8,4 +8,4 @@ The backend API data is hosted using Cloudflare Worker. Which can be retrieved f
 The frontend is a simple React app which uses `recharts` to present the daily numbers in area charts.
 
 ## Understand the chart 🧑🏼‍⚕️
-China COVID number is consist of two criteria: `symptomatic` and `None-symptomatic`. My chart simply stack those two numbers together to represent the overall daily number.
+China COVID number is consist of two criteria: `symptomatic` and `asymptomatic`. My chart simply stack those two numbers together to represent the overall daily number.
