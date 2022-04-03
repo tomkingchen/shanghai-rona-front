@@ -4,7 +4,7 @@ import Shanghai from './components/shanghai';
 function App() {
   return (
     <Router>
-      <Shanghai path="/" />
+      <Shanghai path="/shanghai-rona-front" />
     </Router>
   );
 }
