@@ -24,7 +24,7 @@ jobs:
       - name: Setup git config
         run: |
           git config user.name "Tom Chen"
-          git config user.email "<tomking.chen@gmail.com>"
+          git config user.email "tomking.chen@gmail.com"
 
       - name: Deploy GitHub page
         run: yarn deploy
