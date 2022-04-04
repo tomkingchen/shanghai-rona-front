@@ -21,5 +21,10 @@ jobs:
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
+      - name: Setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: Deploy GitHub page
         run: yarn deploy
