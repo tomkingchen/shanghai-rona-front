@@ -23,9 +23,9 @@ jobs:
 
       - name: Deploy GitHub page
         run: yarn deploy
+        uses: tomkingchen/shanghai-rona-front@v1
         with:
-          global: true
-          name: 'Tom Chen'
-          email: 'tomking.chen@gmail.com'
-          actor: 'Tom Chen'
-          token: '${{ secrets.GITHUB_TOKEN }}'
+          target_branch: gh-pages
+          build_dir: build
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
