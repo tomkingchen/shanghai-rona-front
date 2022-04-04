@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
-      - name: Deploy GitHub page
-        run: yarn deploy
+      - run: yarn deploy
+      - name: Deploy
         uses: tomkingchen/shanghai-rona-front@v1
         with:
           target_branch: gh-pages
