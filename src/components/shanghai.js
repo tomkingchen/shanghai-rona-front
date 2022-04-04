@@ -8,7 +8,6 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { format, parseISO } from "date-fns"
 
 const Shanghai = () => {
   const [shanghai, setShanghai] = useState([]);
