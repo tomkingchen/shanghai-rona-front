@@ -23,7 +23,7 @@ jobs:
 
       - run: yarn deploy
       - name: Deploy
-        uses: tomkingchen/shanghai-rona-front@v1
+        uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
           build_dir: build
