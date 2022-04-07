@@ -8,7 +8,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-// import { format, parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 const Shanghai = () => {
   const [shanghai, setShanghai] = useState([]);
@@ -36,10 +36,12 @@ const Shanghai = () => {
             <Area type="monotone" dataKey="asymptomatic" stackId="1" stroke="#ffc658" fill="#ffc658" />
             <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
             <XAxis dataKey="date" tickFormatter={(str1) => {
-              console.log(str1);
-              // const dateObj = parseISO(str1);
-              // return format(dateObj, "MMM d");
-              return str1;
+              if ( str1 === 'auto' || str1 === 0) {
+                return str1;
+              }else{
+                const dateObj = parseISO(str1);
+                return format(dateObj, "MMM d");
+              }
             }} />
             <YAxis />
             <Tooltip />
@@ -56,9 +58,13 @@ const Shanghai = () => {
           }}>
             <Area type="monotone" dataKey="accumulative" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
             <XAxis dataKey="date" tickFormatter={(str2) => {
-              // const dateObj = parseISO(str2);
-              // return format(dateObj, "MMM d");
-              return str2;
+              if ( str2 === 'auto' || str2 === 0){
+                return str2;
+              }else{
+                console.log(str2)
+                const dateObj = parseISO(str2);
+                return format(dateObj, "MMM d");
+              }
             }}/>
             <YAxis />
             <Tooltip />
