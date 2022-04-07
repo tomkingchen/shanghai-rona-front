@@ -37,7 +37,7 @@ const Shanghai = () => {
             <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
             <XAxis dataKey="date" tickFormatter={(str1) => {
               const dateObj = parseISO(str1);
-              return format(dateObj, "MMM d");
+              // return format(dateObj, "MMM d");
               return str1;
             }} />
             <YAxis />
@@ -56,7 +56,7 @@ const Shanghai = () => {
             <Area type="monotone" dataKey="accumulative" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
             <XAxis dataKey="date" tickFormatter={(str2) => {
               const dateObj = parseISO(str2);
-              return format(dateObj, "MMM d");
+              // return format(dateObj, "MMM d");
               return str2;
             }}/>
             <YAxis />
