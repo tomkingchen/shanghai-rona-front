@@ -7,8 +7,8 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-} from "recharts";
-import { format, parseISO } from "date-fns";
+// } from "recharts";
+// import { format, parseISO } from "date-fns";
 
 const Shanghai = () => {
   const [shanghai, setShanghai] = useState([]);
@@ -36,6 +36,7 @@ const Shanghai = () => {
             <Area type="monotone" dataKey="asymptomatic" stackId="1" stroke="#ffc658" fill="#ffc658" />
             <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
             <XAxis dataKey="date" tickFormatter={(str1) => {
+              console.log(str1);
               // const dateObj = parseISO(str1);
               // return format(dateObj, "MMM d");
               return str1;
