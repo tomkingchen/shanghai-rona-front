@@ -8,6 +8,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
+import { format, parseISO } from "date-fns";
 
 const Shanghai = () => {
   const [shanghai, setShanghai] = useState([]);
@@ -34,7 +35,10 @@ const Shanghai = () => {
           }}>
             <Area type="monotone" dataKey="asymptomatic" stackId="1" stroke="#ffc658" fill="#ffc658" />
             <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
-            <XAxis dataKey="date" />
+            <XAxis dataKey="date" tickFormatter={(str) => {
+              const dateObj = parseISO(str);
+              return format(dateObj, "MMM d");
+            }} />
             <YAxis />
             <Tooltip />
             <CartesianGrid strokeDasharray="3 3" opacity={0.5}/>
@@ -48,8 +52,11 @@ const Shanghai = () => {
             left: 0,
             bottom: 0,
           }}>
-            <Area type="monotone" dataKey="accumulated" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
-            <XAxis dataKey="date" />
+            <Area type="monotone" dataKey="accumulative" stackId="1" stroke="#82CA9D" fill="#82CA9D" />
+            <XAxis dataKey="date" tickFormatter={(str) => {
+              const dateObj = parseISO(str);
+              return format(dateObj, "MMM d");
+            }}/>
             <YAxis />
             <Tooltip />
             <CartesianGrid strokeDasharray="3 3" opacity={0.5}/>
