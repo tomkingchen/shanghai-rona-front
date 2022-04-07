@@ -7,7 +7,7 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
-// } from "recharts";
+} from "recharts";
 // import { format, parseISO } from "date-fns";
 
 const Shanghai = () => {
