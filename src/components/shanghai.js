@@ -57,7 +57,7 @@ const Shanghai = () => {
             <XAxis dataKey="date" tickFormatter={(str2) => {
               // const dateObj = parseISO(str2);
               // return format(dateObj, "MMM d");
-              return str1;
+              return str2;
             }}/>
             <YAxis />
             <Tooltip />
