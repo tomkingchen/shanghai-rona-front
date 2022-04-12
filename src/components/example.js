@@ -96,7 +96,7 @@ export default class Example extends PureComponent {
   }
 
   render() {
-    const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
+    const { data, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
 
     return (
       <div className="highlight-bar-charts" style={{ userSelect: 'none', width: '100%' }}>
