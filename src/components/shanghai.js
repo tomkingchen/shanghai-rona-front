@@ -50,6 +50,13 @@ const Shanghai = () => {
   return (
     <div>
       <h1>Shanghai Daily Cases 日增😷</h1>
+      <p>数据采集自上海卫健委官网</p>
+      <p>Case numbers are obtained from Shanghai Municipal Health Commission <a
+        href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
+        target="_blank" 
+        rel="noopener noreferrer">
+         Official Website</a> 
+      </p>
       <button type="button" className="show last 2 weeks" onClick={set1month}>
         Last Month
       </button>
