@@ -53,6 +53,7 @@ const Shanghai = () => {
  
   return (
     <div>
+      <h1>Shanghai COVID Statistics</h1>
       <p className="dataSourceClaim">数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
         href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
         target="_blank" 
@@ -78,10 +79,12 @@ const Shanghai = () => {
           </td>
         </tbody>
       </table>
-      <h1>Shanghai Daily Cases 日增😷 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
+      <h1>Daily Cases 日增😷 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
         if (shanghaiArray.length - 1 === index) {
+          const dateObj = parseISO(shanghaiDaily.date);
+          const dateStr = format(dateObj, "MMM d");
           const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic;
-          return totalDailyNumber;
+          return dateStr + ': ' + totalDailyNumber;
         }else {
           return '';
         }
@@ -109,7 +112,7 @@ const Shanghai = () => {
           <CartesianGrid strokeDasharray="3 3" opacity={0.5}/>
         </AreaChart>
       </ResponsiveContainer>
-      <h1>Shanghai Accumulated Cases 累计确诊😩 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
+      <h1>Accumulative Cases 累计确诊😩 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
         if (shanghaiArray.length - 1 === index) {
           return shanghaiDaily.accumulative;
         }else {
