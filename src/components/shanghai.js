@@ -47,16 +47,25 @@ const Shanghai = () => {
     setShanghai(last1weekData);
   };
 
+  // const latestData = shanghai[shanghai.length - 1];
+  // const latestDailyTotal = latestData.symptomatic + latestData.asymptomatic;
+ 
   return (
     <div>
-      <h1>Shanghai Daily Cases 日增😷</h1>
-      <p>数据采集自上海卫健委官网</p>
-      <p>Case numbers are obtained from Shanghai Municipal Health Commission <a
+      <p>数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
         href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
         target="_blank" 
         rel="noopener noreferrer">
          Official Website</a> 
       </p>
+      <h1>Shanghai Daily Cases 日增😷 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
+        if (shanghaiArray.length - 1 === index) {
+          const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic;
+          return totalDailyNumber;
+        }else {
+          return '';
+        }
+      })} </h1>
       <button type="button" className="show last 2 weeks" onClick={set1month}>
         Last Month
       </button>
@@ -89,7 +98,13 @@ const Shanghai = () => {
           <CartesianGrid strokeDasharray="3 3" opacity={0.5}/>
         </AreaChart>
       </ResponsiveContainer>
-      <h1>Shanghai Accumulated Cases 累计确诊😩</h1>
+      <h1>Shanghai Accumulated Cases 累计确诊😩 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
+        if (shanghaiArray.length - 1 === index) {
+          return shanghaiDaily.accumulative;
+        }else {
+          return '';
+        }}
+      )}</h1>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={shanghai} margin={{
           top: 10,
