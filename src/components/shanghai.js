@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './shanghai.css'
 import {
   ResponsiveContainer,
   AreaChart,
@@ -52,12 +53,31 @@ const Shanghai = () => {
  
   return (
     <div>
-      <p>数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
+      <p className="dataSourceClaim">数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
         href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
         target="_blank" 
         rel="noopener noreferrer">
          Official Website</a> 
       </p>
+      <table>
+        <tbody>
+          <td>
+            <button className="button-26" type="button" onClick={set1month}>
+              Last Month
+            </button>
+          </td>
+          <td>
+      <button className="button-26" type="button" onClick={set2weeks}>
+        Last 2 Weeks
+      </button>
+          </td>
+          <td>
+      <button className="button-26" type="button" onClick={set1week}>
+        Last Week
+      </button>
+          </td>
+        </tbody>
+      </table>
       <h1>Shanghai Daily Cases 日增😷 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
         if (shanghaiArray.length - 1 === index) {
           const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic;
@@ -66,15 +86,6 @@ const Shanghai = () => {
           return '';
         }
       })} </h1>
-      <button type="button" className="show last 2 weeks" onClick={set1month}>
-        Last Month
-      </button>
-      <button type="button" className="show last 2 weeks" onClick={set2weeks}>
-        Last 2 Weeks
-      </button>
-      <button type="button" className="show last week" onClick={set1week}>
-        Last Week
-      </button>
       <p></p>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={shanghai} margin={{
