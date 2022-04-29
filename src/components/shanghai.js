@@ -36,19 +36,31 @@ const Shanghai = () => {
   
   async function set1month(){
     const jsonResp = await fetchData();
-    const last1monthData = jsonResp.slice(-30);
+    const newShanghai = jsonResp.map((shanghaiDaily) => {
+      const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
+      return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
+    })
+    const last1monthData = newShanghai.slice(-30);
     setShanghai(last1monthData);
   };
 
   async function set2weeks(){
     const jsonResp = await fetchData();
-    const last2weeksData = jsonResp.slice(-14);
+    const newShanghai = jsonResp.map((shanghaiDaily) => {
+      const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
+      return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
+    })
+    const last2weeksData = newShanghai.slice(-14);
     setShanghai(last2weeksData);
   };
   
   async function set1week(){
     const jsonResp = await fetchData();
-    const last1weekData = jsonResp.slice(-7);
+    const newShanghai = jsonResp.map((shanghaiDaily) => {
+      const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
+      return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
+    })
+    const last1weekData = newShanghai.slice(-7);
     setShanghai(last1weekData);
   };
 
