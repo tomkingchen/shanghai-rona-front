@@ -28,7 +28,6 @@ const Shanghai = () => {
         const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
         return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
       })
-      console.log(newShanghai);
       setShanghai(newShanghai);
     };
 
@@ -59,14 +58,9 @@ const Shanghai = () => {
   return (
     <div>
       <h1>Shanghai COVID Statistics</h1>
-      <p className="dataSourceClaim">数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
-        href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
-        target="_blank" 
-        rel="noopener noreferrer">
-         Official Website</a> 
-      </p>
       <table>
         <tbody>
+          <tr>
           <td>
             <button className="button-26" type="button" onClick={set1month}>
               Last Month
@@ -82,6 +76,7 @@ const Shanghai = () => {
         Last Week
       </button>
           </td>
+        </tr>
         </tbody>
       </table>
       <h1>Daily Cases 日增😷 { shanghai.map((shanghaiDaily, index, shanghaiArray) => {
@@ -94,7 +89,6 @@ const Shanghai = () => {
           return '';
         }
       })} </h1>
-      <div>⚠️⚠️确诊病例数不再包括前一天的转归病例 For the sake of accuracy, I have deducted those pre-existed asymptomatic cases that has since been re-counted as symptomatic cases from the daily symptomatic numbers</div>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={shanghai} margin={{
           top: 10,
@@ -145,6 +139,16 @@ const Shanghai = () => {
           <CartesianGrid strokeDasharray="3 3" opacity={0.5}/>
         </AreaChart>
       </ResponsiveContainer>
+      <p>⚠️⚠️确诊病例数不再包括前一天的转归病例</p>
+      <p>
+        For the sake of accuracy, I have deducted those pre-existed asymptomatic cases that has since been re-counted as symptomatic cases from the daily symptomatic numbers
+      </p>
+      <p className="dataSourceClaim">数据采集自上海卫健委官网 Case numbers are obtained from Shanghai Municipal Health Commission <a
+        href="https://wsjkw.sh.gov.cn/yqtb/index.html" 
+        target="_blank" 
+        rel="noopener noreferrer">
+         Official Website</a> 
+      </p>
     </div>
   );
 };
