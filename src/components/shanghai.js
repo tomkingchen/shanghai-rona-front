@@ -83,7 +83,7 @@ const Shanghai = () => {
         if (shanghaiArray.length - 1 === index) {
           const dateObj = parseISO(shanghaiDaily.date);
           const dateStr = format(dateObj, "MMM d");
-          const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic;
+          const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic - shanghaiDaily.preasymptomatic;
           return dateStr + ': ' + totalDailyNumber;
         }else {
           return '';
