@@ -24,7 +24,12 @@ const Shanghai = () => {
   useEffect(() => {
     const getShanghai = async () => {
       const jsonResp = await fetchData();
-      setShanghai(jsonResp);
+      const newShanghai = jsonResp.map((shanghaiDaily) => {
+        const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
+        return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
+      })
+      console.log(newShanghai);
+      setShanghai(newShanghai);
     };
 
     getShanghai();
@@ -83,13 +88,13 @@ const Shanghai = () => {
         if (shanghaiArray.length - 1 === index) {
           const dateObj = parseISO(shanghaiDaily.date);
           const dateStr = format(dateObj, "MMM d");
-          const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic - shanghaiDaily.preasymptomatic;
+          const totalDailyNumber = shanghaiDaily.symptomatic + shanghaiDaily.asymptomatic;
           return dateStr + ': ' + totalDailyNumber;
         }else {
           return '';
         }
       })} </h1>
-      <p></p>
+      <div>⚠️⚠️确诊病例数不再包括前一天的转归病例 For the sake of accuracy, I have deducted those pre-existed asymptomatic cases that has since been re-counted as symptomatic cases from the daily symptomatic numbers</div>
       <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={shanghai} margin={{
           top: 10,
@@ -98,7 +103,7 @@ const Shanghai = () => {
           bottom: 0,
         }}>
           <Area type="monotone" dataKey="asymptomatic" stackId="1" stroke="#ffc658" fill="#ffc658" />
-          <Area type="monotone" dataKey="symptomatic" stackId="1" stroke="#8884d8" fill="#8884D8" />
+          <Area type="monotone" dataKey={"symptomatic"} stackId="1" stroke="#8884d8" fill="#8884D8" />
           <XAxis dataKey="date" tickFormatter={(str1) => {
             if ( str1 === 'auto' || str1 === 0) {
               return str1;
