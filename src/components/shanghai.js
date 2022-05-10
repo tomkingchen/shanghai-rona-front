@@ -34,6 +34,15 @@ const Shanghai = () => {
     getShanghai();
   }, []);
   
+  async function setFullRange(){
+    const jsonResp = await fetchData();
+    const newShanghai = jsonResp.map((shanghaiDaily) => {
+      const newSymptomatic = shanghaiDaily.symptomatic - shanghaiDaily.preasymptomatic;
+      return { date: shanghaiDaily.date, symptomatic: newSymptomatic, asymptomatic: shanghaiDaily.asymptomatic, accumulative: shanghaiDaily.accumulative}
+    })
+    setShanghai(newShanghai);
+  };
+
   async function set1month(){
     const jsonResp = await fetchData();
     const newShanghai = jsonResp.map((shanghaiDaily) => {
@@ -74,19 +83,24 @@ const Shanghai = () => {
         <tbody>
           <tr>
           <td>
-            <button className="button-26" type="button" onClick={set1month}>
+            <button className="timeRange-button" type="button" onClick={setFullRange}>
+              Since March
+            </button>
+          </td>
+          <td>
+            <button className="timeRange-button" type="button" onClick={set1month}>
               Last Month
             </button>
           </td>
           <td>
-      <button className="button-26" type="button" onClick={set2weeks}>
-        Last 2 Weeks
-      </button>
+            <button className="timeRange-button" type="button" onClick={set2weeks}>
+              Last 2 Weeks
+            </button>
           </td>
           <td>
-      <button className="button-26" type="button" onClick={set1week}>
-        Last Week
-      </button>
+            <button className="timeRange-button" type="button" onClick={set1week}>
+            Last Week
+            </button>
           </td>
         </tr>
         </tbody>
