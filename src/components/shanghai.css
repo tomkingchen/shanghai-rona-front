@@ -2,7 +2,7 @@
     font-size: 10px;
 }
 
-.button-26 {
+.timeRange-button {
   appearance: button;
   background-color: #1652F0;
   border: 1px solid #1652F0;
@@ -25,20 +25,20 @@
   width: fit-content;
 }
 
-.button-26:disabled {
+.timeRange-button:disabled {
   opacity: .5;
 }
 
-.button-26:focus {
+.timeRange-button:focus {
   outline: 0;
 }
 
-.button-26:hover {
+.timeRange-button:hover {
   background-color: #0A46E4;
   border-color: #0A46E4;
 }
 
-.button-26:active {
+.timeRange-button:active {
   background-color: #0039D7;
   border-color: #0039D7;
 }
